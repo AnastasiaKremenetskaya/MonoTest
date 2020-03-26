@@ -18,4 +18,19 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome')->withMenu($menu);
 //})->name('welcome');
 
-Route::get('/', 'AdminController@index')->name('main');
+Route::get('/', 'AdminController@showMainPage')->name('main');
+
+Route::resource('/users', 'UsersController', [
+    'names' => [
+        'index' => 'users.index',
+        'show' => 'users.show',
+        'create' => 'users.create',
+        'update' => 'users.update',
+        'edit' => 'users.edit',
+        'store' => 'users.store',
+        'destroy' => 'users.destroy',
+    ],
+    'parameters' => [
+        'users' => 'id'
+    ]
+]);

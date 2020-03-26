@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function showMainPage()
     {
+
         $menu = config("admin_menu");
 
         return view('main')->withMenu($menu);
@@ -21,6 +22,7 @@ class AdminController extends Controller
     protected function renderAdmin($view, $vars = [])
     {
         $menu = config("admin_menu");
-        return view($view)->with($menu);
+
+        return view($view)->with($vars)->withMenu($menu);
     }
 }

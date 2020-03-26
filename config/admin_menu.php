@@ -9,7 +9,7 @@ return [
     [
         "name" => "Клиенты",
         "ico" => "fa-users",
-        "route" => "main"
+        "route" => "users.index"
     ],
     [
         "name" => "Автомобили",
