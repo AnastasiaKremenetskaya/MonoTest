@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset("css/vendor.css") }}">
     <link rel="stylesheet" href="{{ asset("css/elephant.css") }}">
     <link rel="stylesheet" href="{{ asset("css/application.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/custom.css") }}">
 </head>
 <body class="layout layout-header-fixed">
 <div class="layout-header">

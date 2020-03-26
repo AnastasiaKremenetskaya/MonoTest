@@ -14,7 +14,7 @@ return [
     [
         "name" => "Автомобили",
         "ico" => "fa-car",
-        "route" => "main"
+        "route" => "cars.index"
     ],
     [
         "name" => "Выход",
