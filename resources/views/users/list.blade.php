@@ -48,8 +48,13 @@
                                     <td>
                                         <strong>{{ $user["address"] }} </strong>
                                     </td>
-                                    <td class="maw-320">
-                                        <strong>later</strong>
+                                    <td>
+                                        <ol>
+                                            @foreach($user->cars as $car)
+                                                <li>{{ $car['make'] }}</li>
+                                            @endforeach
+                                        </ol>
+                                        <a href="{{ route("cars.create", ["id" => $user["id"]] ) }}" class="btn btn-info">Добавить авто</a>
                                     </td>
                                     <td>
                                         <div class="btn-group pull-right dropdown">

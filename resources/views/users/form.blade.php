@@ -56,24 +56,6 @@
                                type="text">
                     </div>
 
-
-                    <label class="col-sm-1 control-label" for="form-control-1">Удалить</label>
-                    <div class="col-sm-12">
-                        <input id="id" class="form-control" name="id" value="{{ $user["id"] ?? '' }}"
-                               type="text">
-                    </div>
-{{--                    <div class="col-sm-6">--}}
-{{--                        <div class="form-group">--}}
-{{--                            <label for="extra_service">Автомобили</label>--}}
-{{--                            <select class="form-control" name="cars">--}}
-{{--                                @foreach ($cars as $option)--}}
-{{--                                    <option value="{{$option->id}}">{{ $option->make }} ---}}
-{{--                                        ${{ $option->model }}</option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
                     <label class="col-sm-3 control-label" for="form-control-1"></label>
                     <div class="col-sm-9 submitBtn" align="right">
                         <label class="btn btn-success file-upload-btn">

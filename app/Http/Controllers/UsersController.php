@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -19,10 +20,12 @@ class UsersController extends AdminController
     public function index(Request $request)
     {
         $users = User::orderBy('created_at', 'desc')->paginate($this->usersInPage);
+        //$cars = DB::select('select * from cars inner join users on cars.user_id = users.id ');
         return $this->renderAdmin('users.list', [
-            'users' => $users
+            'users' => $users,
         ]);
     }
+//$staff = DB::select('select * from staff where id = :id', ['id' => $id]);//Staff::whereId($id)->first();
 
     /**
      * Show the form for creating a new resource.
@@ -47,7 +50,7 @@ class UsersController extends AdminController
         $validator = Validator::make($request->all(), [
             'full_name' => ['required', 'string', 'min:3|max:255'],
             'gender' => 'required',
-            'phone' => 'required',
+            'phone' => ['required', 'unique:users'],
             'address' => 'required',
         ]);
 

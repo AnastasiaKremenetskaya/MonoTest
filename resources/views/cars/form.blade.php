@@ -1,7 +1,8 @@
 @extends('main')
 
 @section('content')
-    <div class="title-bar">
+
+<div class="title-bar">
         <h1 class="title-bar-title">
             <span class="d-ib">
                 @if($update ?? false)
@@ -27,6 +28,19 @@
                     @if($update ?? false)
                         @method('PUT')
                     @endif
+
+                    <label class="col-sm-3 control-label" for="form-control-1">Клиент</label>
+                    <div class="col-xs-4 col-sm-3">
+                        <select class="custom-select" name="user_id" id="user_id">
+                            @if($user ?? false)
+                                <option value="{{ $user->id }}">{{ $user->full_name }}</option>
+                            @else
+                                @foreach($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->full_name }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
 
                     <label class="col-sm-3 control-label" for="form-control-1">Марка</label>
                     <div class="col-sm-9">

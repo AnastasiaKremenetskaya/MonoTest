@@ -15,4 +15,9 @@ class User extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function cars()
+    {
+        return $this->hasMany(Car::class, 'user_id');
+    }
 }

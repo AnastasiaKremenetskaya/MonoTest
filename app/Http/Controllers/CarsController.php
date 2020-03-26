@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Car;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class CarsController extends AdminController
@@ -32,8 +33,21 @@ class CarsController extends AdminController
      */
     public function create()
     {
+
+        if(app('request')->input('id')) {
+            $user = User::whereId(app('request')->input('id'))->first();
+
+            return $this->renderAdmin("cars.form", [
+                "route" => route("cars.store"),
+                'user' => $user
+            ]);
+        }
+
+        $users = DB::select('select * from users');
+
         return $this->renderAdmin("cars.form", [
-            "route" => route("cars.store")
+            "route" => route("cars.store"),
+            'users' => $users
         ]);
     }
 
@@ -50,6 +64,7 @@ class CarsController extends AdminController
             'model' => 'required',
             'colour' => 'required',
             'license_plate_number' => 'required',
+            'user_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -62,6 +77,7 @@ class CarsController extends AdminController
             'colour' => $request['colour'],
             'license_plate_number' => $request['license_plate_number'],
             'is_on_parking' => $request->has('is_on_parking'),
+            'user_id' => $request['user_id']
         ]);
 
         return redirect()->route("cars.index")->withSuccess("Автомобиль успешно добавлен");
@@ -76,11 +92,13 @@ class CarsController extends AdminController
     public function edit($id)
     {
         $car = Car::whereId($id)->first();
+        $users = DB::select('select * from users');
 
         return $this->renderAdmin("cars.form", [
             "car" => $car,
             "route" => route("cars.update", ["id" => $id]),
-            "update" => true
+            "update" => true,
+            'users' => $users
         ]);
     }
 
@@ -98,6 +116,7 @@ class CarsController extends AdminController
             'model' => 'required',
             'colour' => 'required',
             'license_plate_number' => 'required',
+            'user_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -110,6 +129,7 @@ class CarsController extends AdminController
             'colour' => $request['colour'],
             'license_plate_number' => $request['license_plate_number'],
             'is_on_parking' => $request->has('is_on_parking'),
+            'user_id' => $request['user_id']
         ]);
 
         return redirect()->route("cars.index")->withSuccess("Автомобиль успешно изменен");

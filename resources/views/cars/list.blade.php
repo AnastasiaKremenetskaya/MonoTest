@@ -23,6 +23,7 @@
                                 <th>
                                     #
                                 </th>
+                                <th>Клиент</th>
                                 <th>Марка</th>
                                 <th>Модель</th>
                                 <th>Цвет кузова</th>
@@ -37,10 +38,13 @@
                                         {{ $loop->iteration + ($cars->currentpage() - 1) * $cars->perpage() }}
                                     </td>
                                     <td>
+                                        <strong>{{ $car->user->full_name }}</strong>
+                                    </td>
+                                    <td>
                                         <strong>{{ $car['make'] }}</strong>
                                     </td>
                                     <td>
-                                        <p>{{ $car['model'] }}</p>
+                                        <strong>{{ $car['model'] }}</strong>
                                     </td>
                                     <td>
                                         <strong>{{ $car["colour"] }} </strong>
