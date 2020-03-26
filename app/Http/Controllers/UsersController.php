@@ -45,7 +45,10 @@ class UsersController extends AdminController
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'full_name' => ['required', 'string', 'min:3|max:255']
+            'full_name' => ['required', 'string', 'min:3|max:255'],
+            'gender' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -89,7 +92,10 @@ class UsersController extends AdminController
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'full_name' => ['required', 'string', 'min:3|max:255']
+            'full_name' => ['required', 'string', 'min:3|max:255'],
+            'gender' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -119,5 +125,4 @@ class UsersController extends AdminController
         User::whereId($id)->delete();
         return redirect()->route("users.index")->withSuccess("Пользователь успешно удален");
     }
-
 }
