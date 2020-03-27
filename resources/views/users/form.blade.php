@@ -28,7 +28,7 @@
                         @method('PUT')
                     @endif
 
-                    <label class="col-sm-3 control-label" for="form-control-1">ФИО (мин 3 символа)</label>
+                    <label class="col-sm-4" for="form-control-1">ФИО (мин 3 символа)</label>
                     <div class="col-sm-12">
                         <input id="full_name" class="form-control" name="full_name"
                                value="{{ $user["full_name"] ?? '' }}"
@@ -37,14 +37,14 @@
 
                     <label class="col-sm-1 control-label" for="form-control-1">Пол</label>
                     <div class="col-sm-12">
-                        <select name="gender">
+                        <select class="custom-select" name="gender">
                             <option value="male">Мужской</option>
                             <option value="female">Женский</option>
                             <option value="other">Прочее</option>
                         </select>
                     </div>
 
-                    <label class="col-sm-3 control-label" for="form-control-1">Номер телефона</label>
+                    <label class="col-sm-4" for="form-control-1">Номер телефона</label>
                     <div class="col-sm-12">
                         <input id="phone" class="form-control" name="phone" value="{{ $user["phone"] ?? '' }}"
                                type="tel">

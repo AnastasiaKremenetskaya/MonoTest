@@ -29,8 +29,8 @@
                         @method('PUT')
                     @endif
 
-                    <label class="col-sm-3 control-label" for="form-control-1">Клиент</label>
-                    <div class="col-xs-4 col-sm-3">
+                    <label class="col-sm-1 control-label" for="form-control-1">Клиент</label>
+                    <div class="col-sm-12">
                         <select class="custom-select" name="user_id" id="user_id">
                             @if($user ?? false)
                                 <option value="{{ $user->id }}">{{ $user->full_name }}</option>
@@ -42,32 +42,32 @@
                         </select>
                     </div>
 
-                    <label class="col-sm-3 control-label" for="form-control-1">Марка</label>
-                    <div class="col-sm-9">
+                    <label class="col-sm-1 control-label" for="form-control-1">Марка</label>
+                    <div class="col-sm-12">
                         <input id="make" class="form-control" name="make" value="{{ $car["make"] ?? '' }}"
                                type="text">
                     </div>
 
-                    <label class="col-sm-3 control-label" for="form-control-1">Модель</label>
-                    <div class="col-sm-9">
+                    <label class="col-sm-1 control-label" for="form-control-1">Модель</label>
+                    <div class="col-sm-12">
                         <input id="model" class="form-control" name="model" value="{{ $car["model"] ?? '' }}"
                                type="text">
                     </div>
 
-                    <label class="col-sm-3 control-label" for="form-control-1">Цвет кузова</label>
-                    <div class="col-sm-9">
+                    <label class="col-sm-4" for="form-control-1">Цвет кузова</label>
+                    <div class="col-sm-12">
                         <input id="colour" class="form-control" name="colour" value="{{ $car["colour"] ?? '' }}"
                                type="text">
                     </div>
 
-                    <label class="col-sm-3 control-label" for="form-control-1">Гос Номер РФ</label>
-                    <div class="col-sm-9">
+                    <label class="col-sm-4" for="form-control-1">Гос Номер РФ</label>
+                    <div class="col-sm-12">
                         <input id="license_plate_number" class="form-control" name="license_plate_number"
                                value="{{ $car["license_plate_number"] ?? '' }}"
                                type="number">
                     </div>
 
-                    <label class="col-sm-3 control-label">Присутствует на стоянке?</label>
+                    <label class="col-sm-4">Присутствует на стоянке?</label>
                     <div class="col-xs-4 col-sm-3">
                         <div class="input-group form_element">
                             <div class="slideTwo">
