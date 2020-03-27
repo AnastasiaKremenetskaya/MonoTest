@@ -28,7 +28,7 @@ Route::resource('/users', 'UsersController', [
         'update' => 'users.update',
         'edit' => 'users.edit',
         'store' => 'users.store',
-        'destroy' => 'users.destroy',
+        'destroy' => 'users.destroy'
     ],
     'parameters' => [
         'users' => 'id'
@@ -43,7 +43,7 @@ Route::resource('/cars', 'CarsController', [
         'update' => 'cars.update',
         'edit' => 'cars.edit',
         'store' => 'cars.store',
-        'destroy' => 'cars.destroy',
+        'destroy' => 'cars.destroy'
     ],
     'parameters' => [
         'cars' => 'id'
