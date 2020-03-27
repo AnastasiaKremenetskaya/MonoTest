@@ -107,5 +107,6 @@
 <script src="{{ asset("js/vendor.min.js") }}"></script>
 <script src="{{ asset("js/elephant.min.js") }}"></script>
 <script src="{{ asset("js/application.min.js") }}"></script>
+<script src="{{ asset("js/custom.js") }}"></script>
 </body>
 </html>

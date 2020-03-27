@@ -159,8 +159,8 @@ class CarsController extends AdminController
      */
     public function destroy($id)
     {
-        dd($id);
-        Car::whereId($id)->delete();
+        DB::table('cars')->where('id',  $id)->delete();
+
         return redirect()->route("cars.index")->withSuccess("Автомобиль успешно удален");
     }
 

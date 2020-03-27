@@ -132,8 +132,8 @@ class UsersController extends AdminController
      */
     public function destroy($id)
     {
-        dd($id);
-        User::whereId($id)->delete();
+        DB::table('users')->where('id',  $id)->delete();
+
         return redirect()->route("users.index")->withSuccess("Пользователь успешно удален");
     }
 }
