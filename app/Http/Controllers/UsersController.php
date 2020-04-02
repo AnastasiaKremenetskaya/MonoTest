@@ -20,7 +20,7 @@ class UsersController extends AdminController
     public function index(Request $request)
     {
 
-        $users = User::orderBy('created_at', 'desc')->paginate($this->usersInPage);
+        $users = User::allSorted()->paginate($this->usersInPage);
 
         return $this->renderAdmin('users.list', [
             'users' => $users,
@@ -76,7 +76,7 @@ class UsersController extends AdminController
      */
     public function edit($id)
     {
-        $user = User::whereId($id)->first();
+        $user = User::id($id)->first();
 
         return $this->renderAdmin("users.form", [
             "user" => $user,
@@ -105,7 +105,7 @@ class UsersController extends AdminController
             return back()->withErrors($validator->errors()->all());
         }
 
-        User::whereId($id)->update([
+        User::id($id)->update([
             'full_name' => $request['full_name'],
             'gender' => $request['gender'],
             'phone' => $request['phone'],
@@ -124,7 +124,7 @@ class UsersController extends AdminController
      */
     public function destroy($id)
     {
-        User::whereId($id)->delete();
+        User::id($id)->delete();
 
         return redirect()->route("users.index")->withSuccess("Пользователь успешно удален");
     }

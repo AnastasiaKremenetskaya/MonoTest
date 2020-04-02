@@ -20,7 +20,7 @@ class CarsController extends AdminController
      */
     public function index(Request $request)
     {
-        $cars = Car::orderBy('created_at', 'desc')->paginate($this->carsInPage);
+        $cars = Car::allSorted()->paginate($this->carsInPage);
 
         return $this->renderAdmin('cars.list', [
             'cars' => $cars,
@@ -36,7 +36,7 @@ class CarsController extends AdminController
     {
 
         if (app('request')->input('id')) {
-            $user = User::whereId(app('request')->input('id'))->first();
+            $user = User::id(app('request')->input('id'))->first();
 
             return $this->renderAdmin("cars.form", [
                 "route" => route("cars.store"),
@@ -92,7 +92,7 @@ class CarsController extends AdminController
      */
     public function edit($id)
     {
-        $car = Car::whereId($id)->first();
+        $car = Car::id($id)->first();
 
         $users = User::all();
 
@@ -125,7 +125,7 @@ class CarsController extends AdminController
             return back()->withErrors($validator->errors()->all());
         }
 
-        Car::whereId($id)->update([
+        Car::id($id)->update([
             'make' => $request['make'],
             'model' => $request['model'],
             'colour' => $request['colour'],
@@ -146,7 +146,7 @@ class CarsController extends AdminController
      */
     public function destroy($id)
     {
-        Car::whereId($id)->delete();
+        Car::id($id)->delete();
 
         return redirect()->route("cars.index")->withSuccess("Автомобиль успешно удален");
     }

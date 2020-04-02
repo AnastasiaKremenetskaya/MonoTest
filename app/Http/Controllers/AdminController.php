@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Http\Request;
 
@@ -9,10 +10,7 @@ class AdminController extends Controller
 {
     public function showMainPage()
     {
-
-        $menu = config("admin_menu");
-
-        return view('main')->withMenu($menu);
+        return $this->renderAdmin('main');
     }
     /**
      * @param $view
@@ -22,7 +20,8 @@ class AdminController extends Controller
     protected function renderAdmin($view, $vars = [])
     {
         $menu = config("admin_menu");
+        $clients = User::all()->count();
 
-        return view($view)->with($vars)->withMenu($menu);
+        return view($view)->with($vars)->withMenu($menu)->withClients($clients);
     }
 }

@@ -16,6 +16,16 @@ class User extends Model
      */
     protected $guarded = [];
 
+    public function scopeId($query, $id = null)
+    {
+        $query->where('id', $id ?: $this->id);
+    }
+
+    public function scopeAllSorted($query)
+    {
+        $query->orderBy('created_at', 'desc');
+    }
+
     public function cars()
     {
         return $this->hasMany(Car::class, 'user_id');

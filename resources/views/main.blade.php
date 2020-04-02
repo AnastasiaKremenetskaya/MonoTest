@@ -91,7 +91,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Уже зарегистрировано:</h5>
                         <div class="card-text">
-                            <h3 id="client_amount"></h3>
+                            <h3 id="client_amount">{{ $clients }}</h3>
                         </div>
                     </div>
                 </div>
