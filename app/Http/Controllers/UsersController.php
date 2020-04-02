@@ -21,7 +21,7 @@ class UsersController extends AdminController
     {
 
         $users = User::orderBy('created_at', 'desc')->paginate($this->usersInPage);
-        //$cars = DB::select('select * from cars inner join users on cars.user_id = users.id ');
+
         return $this->renderAdmin('users.list', [
             'users' => $users,
         ]);
@@ -58,13 +58,12 @@ class UsersController extends AdminController
             return back()->withErrors($validator->errors()->all());
         }
 
-        DB::table('users')->insert(
-            [
-                'full_name' => $request['full_name'],
-                'gender' => $request['gender'],
-                'phone' => $request['phone'],
-                'address' => $request['address'],
-            ]);
+        User::create([
+            'full_name' => $request['full_name'],
+            'gender' => $request['gender'],
+            'phone' => $request['phone'],
+            'address' => $request['address'],
+        ]);
 
         return redirect()->route("users.index")->withSuccess("Пользователь успешно добавлен");
     }
@@ -77,7 +76,6 @@ class UsersController extends AdminController
      */
     public function edit($id)
     {
-        //$user =  DB::select('SELECT * FROM users WHERE id = :id', ['id' => $id]);
         $user = User::whereId($id)->first();
 
         return $this->renderAdmin("users.form", [
@@ -107,18 +105,12 @@ class UsersController extends AdminController
             return back()->withErrors($validator->errors()->all());
         }
 
-        DB::update(DB::raw("UPDATE users SET full_name = :full_name,
-                                                    gender = :gender,
-                                                    phone = :phone,
-                                                    address = :address
-                                                    WHERE id = :id"),
-            array(
-                'id' => $id,
-                'full_name' => $request['full_name'],
-                'gender' => $request['gender'],
-                'phone' => $request['phone'],
-                'address' => $request['address'],
-            ));
+        User::whereId($id)->update([
+            'full_name' => $request['full_name'],
+            'gender' => $request['gender'],
+            'phone' => $request['phone'],
+            'address' => $request['address'],
+        ]);
 
         return redirect()->route("users.index")->withSuccess("Пользователь успешно изменен");
     }
@@ -132,7 +124,7 @@ class UsersController extends AdminController
      */
     public function destroy($id)
     {
-        DB::table('users')->where('id',  $id)->delete();
+        User::whereId($id)->delete();
 
         return redirect()->route("users.index")->withSuccess("Пользователь успешно удален");
     }
