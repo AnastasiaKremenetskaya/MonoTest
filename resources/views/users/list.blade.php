@@ -40,7 +40,7 @@
                                         <strong>{{ $user['full_name'] }}</strong>
                                     </td>
                                     <td>
-                                        <p>{{ $user['gender'] }}</p>
+                                        <strong>{{ $user['gender'] }}</strong>
                                     </td>
                                     <td>
                                         <strong>{{ $user["phone"] }} </strong>

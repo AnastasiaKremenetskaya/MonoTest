@@ -57,6 +57,7 @@ class CarsController extends AdminController
      *
      * @param Request $request
      * @return Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
@@ -81,7 +82,8 @@ class CarsController extends AdminController
             'user_id' => $request['user_id']
         ]);
 
-        return redirect()->route("cars.index")->withSuccess("Автомобиль успешно добавлен");
+        return response()->json(null, 200);
+        //return redirect()->route("cars.index")->withSuccess("Автомобиль успешно добавлен");
     }
 
     /**

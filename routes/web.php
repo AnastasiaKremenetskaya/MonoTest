@@ -40,9 +40,7 @@ Route::resource('/cars', 'CarsController', [
         'index' => 'cars.index',
         'show' => 'cars.show',
         'create' => 'cars.create',
-        'update' => 'cars.update',
         'edit' => 'cars.edit',
-        'store' => 'cars.store',
         'destroy' => 'cars.destroy'
     ],
     'parameters' => [
