@@ -25,9 +25,7 @@ Route::resource('/users', 'UsersController', [
         'index' => 'users.index',
         'show' => 'users.show',
         'create' => 'users.create',
-        'update' => 'users.update',
         'edit' => 'users.edit',
-        'store' => 'users.store',
         'destroy' => 'users.destroy'
     ],
     'parameters' => [

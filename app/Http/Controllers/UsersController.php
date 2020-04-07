@@ -55,7 +55,7 @@ class UsersController extends AdminController
         ]);
 
         if ($validator->fails()) {
-            return back()->withErrors($validator->errors()->all());
+            return response()->json($validator->errors()->all(), 404);
         }
 
         User::create([
@@ -65,7 +65,8 @@ class UsersController extends AdminController
             'address' => $request['address'],
         ]);
 
-        return redirect()->route("users.index")->withSuccess("Пользователь успешно добавлен");
+        return response()->json(null, 200);
+        //return redirect()->route("users.index")->withSuccess("Пользователь успешно добавлен");
     }
 
     /**

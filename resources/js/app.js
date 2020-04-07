@@ -12,6 +12,8 @@ Vue.use(Vuetify);
 
 Vue.component('car-form-create', require('./components/CarFormCreate.vue').default);
 Vue.component('car-form-edit', require('./components/CarFormEdit').default);
+Vue.component('user-form-create', require('./components/UserFormCreate.vue').default);
+Vue.component('user-form-edit', require('./components/UserFormEdit').default);
 
 const app = new Vue({
     el: '#app',
